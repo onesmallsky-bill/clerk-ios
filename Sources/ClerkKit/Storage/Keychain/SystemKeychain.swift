@@ -111,6 +111,10 @@ struct SystemKeychain: KeychainStorage {
       query[kSecAttrAccessGroup as String] = accessGroup
     }
 
+    #if os(macOS)
+    query[kSecUseDataProtectionKeychain as String] = true
+    #endif
+
     return query
   }
 }
